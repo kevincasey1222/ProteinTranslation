@@ -3,6 +3,27 @@
 // convenience to get you started writing code faster.
 //
 
+const codonLength = 3;
+const codons = {
+  AUG: 'Methionine',
+  UUU: 'Phenylalanine',
+  UUC: 'Phenylalanine',
+  UUA: 'Leucine',
+  UUG: 'Leucine',
+  UCU: 'Serine',
+  UCC: 'Serine', 
+  UCA: 'Serine', 
+  UCG: 'Serine',
+  UAU: 'Tyrosine', 
+  UAC: 'Tyrosine',
+  UGU: 'Cysteine', 
+  UGC: 'Cysteine',
+  UGG: 'Tryptophan',
+  UAA: "STOP", 
+  UAG: "STOP", 
+  UGA: "STOP"
+};
+
 export const translate = (rna = "") => {
   //specs:
   //consume string, 3 letter sequences (codons)
@@ -10,9 +31,7 @@ export const translate = (rna = "") => {
   //throw error if codon is invalid
   //output array of strings of proteins per codon, empty if string empty or only stop sequence
   
-  const codonLength = 3;
-  const stopCodons = [ "UAA" , "UAG", "UGA"];
-  const errorMsg = 'Invalid codon';
+
   var proteins = [];
 
   var i = 0;
@@ -22,15 +41,15 @@ export const translate = (rna = "") => {
       return proteins;
     } else {
       proteins.push(protein);
-      i = i + 3
+      i = i + codonLength;
     }
   }
 
-  console.log(proteins);
+  //console.log(proteins);
   return proteins;
 
 };
 
 const translateCodon = (codon) => {
-  return "Didit";
+  return codons[codon];
 }
